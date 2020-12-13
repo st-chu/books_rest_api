@@ -37,7 +37,7 @@ def create_book():
         not 'title' in request.json,
     ]):
         abort(400)
-    if is_request_correct(request.json):
+    if is_request_correct(_data):
         abort(400)
     if len(books.all()) == 0:
         _id = 1
@@ -108,6 +108,7 @@ def lend(book_id: int):
     if any([
         'lent' in request.json and not isinstance(request.json['lent'], bool),
         'who' in request.json and not isinstance(request.json['who'], str),
+        not 'who' in request.json
     ]):
         abort(400)
     if book['lend']['lent'] is True:
@@ -123,8 +124,9 @@ def return_book(book_id):
         abort(404)
     if any({
         not 'return' in request.json,
-        not isinstance(request.json['return'], bool)
+        'return' in request.json and not isinstance(request.json['return'], bool)
     }):
+        print('??')
         abort(400)
     if request.json['return'] is True:
         if book['lend']['lent'] is True:

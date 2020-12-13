@@ -44,9 +44,12 @@ class Books:
             return True
         return False
 
-    def sort_books(self, books_to_sort, _key: str, reverse: bool) \
+    def sort_books(self, _key: str, reverse: bool) \
             -> List[Dict[str, Union[str, int, bool, Dict[str, Union[str, bool]]]]]:
-        sorted_books = books_to_sort.sort(self.all(), key=lambda given_key: given_key[_key], reverse=reverse)
+        if _key == "lend":
+            sorted_books = sorted(self.all(), key=lambda given_key: given_key[_key]['lent'], reverse=reverse)
+            return sorted_books
+        sorted_books = sorted(self.all(), key=lambda given_key: given_key[_key], reverse=reverse)
         return sorted_books
 
     def lend_book(self, _book: Dict[str, Union[str, int, bool, Dict[str, Union[str, bool]]]], _who: str) -> None:
@@ -75,7 +78,7 @@ def is_request_correct(_request: Dict[str, Union[str, int, bool, Dict[str, Union
             'title' in _request and not isinstance(_request.get('title'), str),
             'publisher' in _request and not isinstance(_request.get('publisher'), str),
             'description' in _request and not isinstance(_request.get('description'), str),
-            'rating' in _request and not isinstance(_request.get('rating'), int),
+            'rating' in _request and not isinstance(_request['rating'], int),
             'rating' in _request and _request['rating'] not in range(1, 11),
             'read' in _request and not isinstance(_request.get('read'), bool),
             'genre' in _request and not isinstance(_request.get('genre'), str),
@@ -94,7 +97,7 @@ def create_new_book(_id: int, _data: Dict[str, Union[str, int, bool, Dict[str, U
         'title': _data.get('title'),
         'publisher': _data.get('publisher', 'not entered'),
         'description': _data.get('description', ''),
-        'rating': _data.get('rating', ''),
+        'rating': _data.get('rating', 0),
         'read': _data.get('read', False),
         'genre': _data.get('genre', 'not entered'),
         'lend': {'lent': False}
