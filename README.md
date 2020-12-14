@@ -16,15 +16,15 @@ The application is used to catalog books from your home library.
 		- lent (bool) - whether the book was lent to someone
 		- who (str) - to whom the book was lent
 		- return (bool) - whether the book was returned
-        - key (str) - the key by which the book list will be sorted
-        - reverse (bool) - optionally, reverse sort
+                - key (str) - the key by which the book list will be sorted
+                - reverse (bool) - optionally, reverse sort
 
 
 
 # Allowed HTTP requests:
   GET: Get a list of home library books -> Content-Type: application/json
 
-    exemple:
+    example:
     GET http://localhost:5000/api/books/ -> returns a list of all books
     
     GET http://localhost:5000/api/books/<int:id>  -> returns a book with id = <id> 
@@ -33,7 +33,7 @@ The application is used to catalog books from your home library.
 
   DELETE: To delete resource -> Content-Type: application/json
 
-    exemple:
+    example:
     DELETE http://localhost:5000/api/books/<int:id> -> removes the book from id = <id>
         HTTP response status codes 200 if the book was removed
         HTTP response status codes 404 if the book is not listed
@@ -46,7 +46,7 @@ The application is used to catalog books from your home library.
 
   PUT: To update resource -> Content-Type: application/json 
   
-    exemple:
+    example:
 	PUT http://localhost:5000/api/books/<int:id> request.json{"rating": 10, "read": true, "description": "its a damn good book"}
 	    HTTP response status codes 200 if the update was successful
 	    HTTP response status codes 404 if the book is not listed
@@ -70,8 +70,8 @@ The application is used to catalog books from your home library.
          }
         
     updateable attributes:
-        - author (str) - author of the book
-	    - itile (str) - title of the book
+            - author (str) - author of the book
+	    - title (str) - title of the book
 	    - publisher (str) - publisher name
 	    - description (str) - book description
 	    - rating (int) - evaluation of the book on a scale from 1 to 10
@@ -80,7 +80,7 @@ The application is used to catalog books from your home library.
         
   POST: To create or update resource -> Content-Type: application/json 
   
-    exemple (create a new book):
+    example (create a new book):
     POST http://localhost:5000/api/books/ request.json{"author": "Tomasz Samojlik", "title": "Ryjówka przeznaczenia"}
         HTTP response status codes 201 if the new book has been created correctly
         HTTP response status codes 400 if bad request
@@ -104,17 +104,17 @@ The application is used to catalog books from your home library.
         
     possible attributes:
         - author (str) - author of the book, if not specified, creating a book is not possible
-	    - itile (str) - title of the book, if not specified, creating a book is not possible
-	    - publisher (str) - publisher name, if no default setting given: str('not entered')
-	    - description (str) - book description, if no default setting given: empty str('')
-	    - rating (int) - evaluation of the book on a scale from 1 to 10, if no default setting given: int(0) 
-	    - read (bool) - whether the book has been read, if no default setting given: bool(false)
-	    - genre (str) - book genre, if no default setting given: str('not entered')
+	- title (str) - title of the book, if not specified, creating a book is not possible
+	- publisher (str) - publisher name, if no default setting given: str('not entered')
+	- description (str) - book description, if no default setting given: empty str('')                             
+	- rating (int) - evaluation of the book on a scale from 1 to 10, if no default setting given: int(0) 
+	- read (bool) - whether the book has been read, if no default setting given: bool(false)
+	- genre (str) - book genre, if no default setting given: str('not entered')
     attributes added automatically:
-        - id (int) - unique identifier of the book, added if book is create succeeded
-        - lend (dic) - if book create succeeded, set to: {"lent": false}
+        - id (int) - unique identifier of the book, added if book is created
+        - lend (dic) - if book is created, set to: {"lent": false}
         
-     exemple (sort book lists):
+     example (sort book lists):
      POST http://localhost:5000/api/books/sort request.json{"key": "lend"}
          HTTP response status codes 200 if the list is sorted
          HTTP response status codes 400 if bad request
@@ -123,7 +123,7 @@ The application is used to catalog books from your home library.
         - key (str) - the key by which the book list will be sorted, possible keys: id, author, title, publisher, rating, read, genre, lend
         - reverse (bool) - optionally, if {"reverse": true} reverse sort, default setting {"reverse": false}
         
-      exemple (lend the book):
+      example (lend the book):
       POST http://localhost:5000/api/lend/<int:id> request.json{"who": "Kamil"}
          HTTP response status codes 200 if lend was successful
 	     HTTP response status codes 404 if the book is not listed
@@ -152,7 +152,7 @@ The application is used to catalog books from your home library.
       attributes added automatically:
         - lent (bool) -if lent succeeded, set to {"lent": true}
         
-      exemple (return the book):
+      example (return the book):
       POST http://localhost:5000/api/return/<int:id> request.json{"return": true}
          HTTP response status codes 200 if return was successful
 	     HTTP response status codes 404 if the book is not listed
