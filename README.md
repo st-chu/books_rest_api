@@ -179,4 +179,4 @@ The application is used to catalog books from your home library.
         - return (bool) - to whom the book was lent, if the book is already borrowed: HTTP response status codes 400
       attributes added automatically:
         - lent (bool) - if return succeeded, set to {"lent": false}
-        - who (str) - if return succeeded, removed from lent
+        - who (str) - if return succeeded, removed from lend
