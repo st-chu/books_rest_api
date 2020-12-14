@@ -4,20 +4,20 @@ The application is used to catalog books from your home library.
     You can add books to the list, delete them or modify their data
     
     User attributes:
-    	- id (int) - unique identifier of the book, assigned automatically in the process of creating a new item on the list
-		- author (str) - author of the book
-		- title (str) - title of the book
-		- publisher (str) - publisher name
-		- description (str) - book description
-		- rating (int) - evaluation of the book on a scale from 1 to 10
-		- read (bool) - whether the book has been read
-		- genre (str) - book genre
-		- lend (dic) - whether the book was lent to someone
-		- lent (bool) - whether the book was lent to someone
-		- who (str) - to whom the book was lent
-		- return (bool) - whether the book was returned
-                - key (str) - the key by which the book list will be sorted
-                - reverse (bool) - optionally, reverse sort
+        - id (int) - unique identifier of the book, assigned automatically in the process of creating a new item on the list
+        - author (str) - author of the book
+        - title (str) - title of the book
+        - publisher (str) - publisher name
+        - description (str) - book description
+        - rating (int) - evaluation of the book on a scale from 1 to 10
+        - read (bool) - whether the book has been read
+        - genre (str) - book genre
+        - lend (dic) - whether the book was lent to someone
+        - lent (bool) - whether the book was lent to someone
+        - who (str) - to whom the book was lent
+        - return (bool) - whether the book was returned
+        - key (str) - the key by which the book list will be sorted
+        - reverse (bool) - optionally, reverse sort
 
 
 
@@ -70,13 +70,13 @@ The application is used to catalog books from your home library.
          }
         
     updateable attributes:
-            - author (str) - author of the book
-	    - title (str) - title of the book
-	    - publisher (str) - publisher name
-	    - description (str) - book description
-	    - rating (int) - evaluation of the book on a scale from 1 to 10
-	    - read (bool) - whether the book has been read
-	    - genre (str) - book genre
+        - author (str) - author of the book
+        - title (str) - title of the book
+        - publisher (str) - publisher name
+        - description (str) - book description
+        - rating (int) - evaluation of the book on a scale from 1 to 10
+        - read (bool) - whether the book has been read
+        - genre (str) - book genre
         
   POST: To create or update resource -> Content-Type: application/json 
   
@@ -104,12 +104,12 @@ The application is used to catalog books from your home library.
         
     possible attributes:
         - author (str) - author of the book, if not specified, creating a book is not possible
-	- title (str) - title of the book, if not specified, creating a book is not possible
-	- publisher (str) - publisher name, if no default setting given: str('not entered')
-	- description (str) - book description, if no default setting given: empty str('')                             
-	- rating (int) - evaluation of the book on a scale from 1 to 10, if no default setting given: int(0) 
-	- read (bool) - whether the book has been read, if no default setting given: bool(false)
-	- genre (str) - book genre, if no default setting given: str('not entered')
+        - title (str) - title of the book, if not specified, creating a book is not possible
+        - publisher (str) - publisher name, if no default setting given: str('not entered')
+        - description (str) - book description, if no default setting given: empty str('')                             
+        - rating (int) - evaluation of the book on a scale from 1 to 10, if no default setting given: int(0) 
+        - read (bool) - whether the book has been read, if no default setting given: bool(false)
+        - genre (str) - book genre, if no default setting given: str('not entered')
     attributes added automatically:
         - id (int) - unique identifier of the book, added if book is created
         - lend (dic) - if book is created, set to: {"lent": false}
