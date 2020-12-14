@@ -54,7 +54,7 @@ The application is used to catalog books from your home library.
         
      Response(200):
         {
-         "bool": {
+         "book": {
              "author": "Tomasz Somajlik",
              "description": "its a damn good book",
              "genre": "not entered",
@@ -87,7 +87,7 @@ The application is used to catalog books from your home library.
         
     Response(201):
         {
-         "bool": {
+         "book": {
              "author": "Tomasz Somajlik",
              "description": "",
              "genre": "not entered",
@@ -131,7 +131,7 @@ The application is used to catalog books from your home library.
          
      Response(200):
         {
-         "bool": {
+         "book": {
              "author": "Tomasz Somajlik",
              "description": "",
              "genre": "not entered",
@@ -160,7 +160,7 @@ The application is used to catalog books from your home library.
          
     Response(200):
         {
-         "bool": {
+         "book": {
              "author": "Tomasz Somajlik",
              "description": "",
              "genre": "not entered",
