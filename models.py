@@ -78,19 +78,24 @@ def is_request_correct(_request: Dict[str, Union[str, int, bool, Dict[str, Union
             'title' in _request and not isinstance(_request.get('title'), str),
             'publisher' in _request and not isinstance(_request.get('publisher'), str),
             'description' in _request and not isinstance(_request.get('description'), str),
-            'rating' in _request and not isinstance(_request['rating'], int),
-            'rating' in _request and _request['rating'] not in range(1, 11),
+            'rating' in _request and not isinstance(_request.get('rating'), int),
+            'rating' in _request and isinstance(_request.get('rating'), bool),
+            'rating' in _request and _request.get('rating') not in range(1, 11),
             'read' in _request and not isinstance(_request.get('read'), bool),
             'genre' in _request and not isinstance(_request.get('genre'), str),
-            'lend' in _request
+            'lend' in _request and 'lend' in _request
         ]):
+            print('if')
             return True
     except TypeError:
+        print('try')
         return True
 
 
-def create_new_book(_id: int, _data: Dict[str, Union[str, int, bool, Dict[str, Union[str, bool]]]])\
-        -> Dict[str, Union[str, int, bool, Dict[str, Union[str, bool]]]]:
+def create_new_book(
+        _id: int,
+        _data: Dict[str, Union[str, int, bool, Dict[str, Union[str, bool]]]]
+) -> Dict[str, Union[str, int, bool, Dict[str, Union[str, bool]]]]:
     _book = {
         'id': _id,
         'author': _data.get('author'),
